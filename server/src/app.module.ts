@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
-import { DatabaseConfigService } from './database/database.config.service';
+import { ProviderModule } from './database/mysql/provider.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
@@ -15,11 +15,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
-      useClass: DatabaseConfigService,
-      inject: [DatabaseConfigService],
+      useClass: ProviderModule,
+      inject: [ProviderModule],
     }),
   ],
   controllers: [AppController],
-  providers: [DatabaseConfigService],
+  providers: [ProviderModule],
 })
 export class AppModule {}

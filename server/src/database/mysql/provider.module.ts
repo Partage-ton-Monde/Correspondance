@@ -2,8 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 
+import { User } from '../../user/user.entity';
+import { Category } from '../../category/category.entity';
+import { Chatroom } from '../../chatroom/chatroom.entity';
+import { Message } from '../../message/message.entity';
+import { Post } from '../../post/post.entity';
+import { Role } from '../../role/role.entity';
+import { Topic } from '../../topic/topic.entity';
+import { Forum } from '../../forum/forum.entity';
+
 @Injectable()
-export class DatabaseConfigService implements TypeOrmOptionsFactory {
+export class ProviderModule implements TypeOrmOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
@@ -16,7 +25,7 @@ export class DatabaseConfigService implements TypeOrmOptionsFactory {
       username: this.configService.get<string>('DB_USER'),
       password: this.configService.get<string>('DB_PASSWORD'),
       database: this.configService.get<string>('DB_NAME'),
-      entities: [],
+      entities: [User, Category, Chatroom, Message, Post, Role, Topic, Forum],
       synchronize: true,
     };
   }
