@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@nestjs/config": "^2.0.0",
+    "@nestjs/typeorm": "^8.0.3",
+    "connection-string": "^4.3.5",
+    "eslint": "^8.14.0",
+    "mysql2": "^2.3.3",
+    "typeorm": "^0.2.45"
+  }
+}
