@@ -4,7 +4,6 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -23,6 +22,6 @@ export class Forum {
   topics: Topic[];
 
   @ManyToMany(() => Category, (category) => category.forums)
-  @JoinTable()
+  @JoinTable({ name: 'forum_category' })
   categories: Category[];
 }
