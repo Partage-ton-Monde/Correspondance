@@ -32,6 +32,12 @@ export class User {
 
   plainPassword: string;
 
+  @Column()
+  firstname: string;
+
+  @Column()
+  lastname: string;
+
   @Column({ type: 'date' })
   birthdate: string;
 
@@ -48,7 +54,7 @@ export class User {
   messages: Message[];
 
   @ManyToMany(() => Chatroom, (chatroom) => chatroom.user)
-  @JoinTable()
+  @JoinTable({ name: 'user_chatroom' })
   chatrooms: Chatroom[];
 
   @ManyToOne(() => Role)
