@@ -16,6 +16,12 @@ export class ProviderModule implements TypeOrmOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
+    console.log(this.configService.get('DB_DRIVER'));
+    console.log(this.configService.get('DB_HOST'));
+    console.log(this.configService.get('DB_PORT'));
+    console.log(this.configService.get('DB_USER'));
+    console.log(this.configService.get('DB_PASSWORD'));
+    console.log(this.configService.get('DB_NAME'));
     return {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore

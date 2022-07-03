@@ -9,7 +9,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     ConfigModule.forRoot({
       envFilePath: [
-        '.env.local', // This one always have the priority
+        '.env',
+        '.env.local',
         `${process.cwd()}/.env.${process.env.NODE_ENV}`, // Auto. detect environment file based on the NODE_ENV
       ],
       isGlobal: true,
